@@ -22,7 +22,7 @@ VALUES (
     ),
     (
         1002,
-        'Diya Shah',
+        'Vikrant Krishna',
         'diya.shah@example.edu',
         'Electronics',
         2,

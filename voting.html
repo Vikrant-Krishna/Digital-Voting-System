@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cast Vote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Cast Your Vote</h1>
+
+        <div class="login-box">
+
+            <h2>Select President</h2>
+
+            <label>
+                <input type="radio" name="candidate" value="Rahul">
+                Rahul Sharma
+            </label>
+
+            <br><br>
+
+            <label>
+                <input type="radio" name="candidate" value="Priya">
+                Priya Singh
+            </label>
+
+            <br><br>
+
+            <button onclick="submitVote()">
+                Submit Vote
+            </button>
+
+            <p id="voteMessage"></p>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function submitVote() {
+
+            let candidate =
+                document.querySelector(
+                    'input[name="candidate"]:checked'
+                );
+
+            if (candidate == null) {
+
+                document.getElementById("voteMessage").innerText =
+                    "Please select a candidate.";
+
+                return;
+            }
+
+            document.getElementById("voteMessage").innerText =
+                "Vote submitted successfully!";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

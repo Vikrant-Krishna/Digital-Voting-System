@@ -37,7 +37,7 @@ Expected relationships follow the SQL design: candidates link students, election
 1. Start your local MySQL server using MySQL Workbench, the MySQL Windows service, XAMPP, or your existing setup.
 2. In MySQL Workbench or the MySQL client, run your original database schema SQL file first. It should create `VotingDB` and its tables. **No schema SQL was in the uploaded folder**, so this project intentionally does not replace it with guessed DDL.
 3. Optionally run `seed.sql` after the schema to insert demonstration accounts, election and candidate data. Run it once on a clean database because it uses fixed demo student IDs and inserts fresh election and position rows.
-4. Copy `.env.example` to `.env`, then set your local `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME=VotingDB`, `PORT=5000`, and a private `SESSION_SECRET`. `.env` is ignored by Git.
+4. Copy `.env.example` to `.env`, then set your local `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME=VotingDB`, `DB_PORT` (usually `3306`), `DB_SSL` if your MySQL host requires TLS, `PORT=5000`, and a private `SESSION_SECRET`. `.env` is ignored by Git.
 5. In PowerShell, from this project folder, install dependencies and start the backend:
 
    ```powershell
@@ -46,6 +46,10 @@ Expected relationships follow the SQL design: candidates link students, election
    ```
 
 6. Open [http://localhost:5000](http://localhost:5000). Do not open the HTML with `file://`; the pages need the Express API.
+
+### Vercel deployment
+
+Vercel cannot connect to MySQL running on your own computer via `localhost`. Use a hosted MySQL service reachable from the internet, run the schema and seed against that hosted database, then add `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_SSL`, and `SESSION_SECRET` under the Vercel project's **Settings → Environment Variables** for Production. Do not put a local `.env` file in Git. After changing environment variables, redeploy so the new values are applied. The current local `.env` values are for local development and should not be copied to production unless they belong to the hosted database.
 
 ## Demo accounts
 
